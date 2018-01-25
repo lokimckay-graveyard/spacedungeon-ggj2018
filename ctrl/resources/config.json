@@ -1,0 +1,19 @@
+{
+	"meta": {
+		"project": "GGJ2018",
+		"version": "v0.1"
+	},
+	"scene": {
+		"base": "Assets/Scenes/",
+		"list": [ "menu", "main" ]
+	},
+	"path": {
+		"buildDir": "\\out\\build",
+		"versionFile": "\\out\\version.txt",
+		"platformExt": "win64Build.exe"
+	},
+	"platformExt": {
+		"win_32": "win32Build.exe",
+		"win_64": "win64Build.exe"
+	}
+}

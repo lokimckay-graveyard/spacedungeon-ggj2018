@@ -1,0 +1,19 @@
+# dirs
+Library/
+AssetsLogs/
+Temp/
+obj/
+out/
+out/build/
+unity/build/
+
+# files
+*.sln
+*.csproj
+.leu
+Thumbs.db
+
+# ide
+.idea
+.vscode
+.vs

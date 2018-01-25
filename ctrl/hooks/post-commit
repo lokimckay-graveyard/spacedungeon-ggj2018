@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+echo ""
+echo "Post-Commit Hook"
+echo "----------------"
+
+CURR_DIR="$(cd `dirname $0` && pwd)"
+GIT_DIR="$(dirname "$CURR_DIR")"
+ROOT_DIR="$(dirname "$GIT_DIR")"
+CTRL_DIR="$ROOT_DIR"/ctrl
+DOCS_BUILD_DIR="$ROOT_DIR/docs/build"
+HOOKS_DIR="$CTRL_DIR"/hooks
+HOOKS_REL='../../ctrl/hooks'
+GIT_HOOKS_DIR="$ROOT_DIR"/.git/hooks
+
+pushd () { 
+    command pushd "$@" > /dev/null 
+}
+
+popd () {
+    command popd "$@" > /dev/null 
+}
+
+linkHooks() {
+    pushd $GIT_HOOKS_DIR
+        ln -s -f "$HOOKS_REL"/post-commit post-commit
+    popd
+}
+
+unlinkHooks() {
+    rm $GIT_HOOKS_DIR/*
+}
+
+exec < /dev/tty
+
+while true; do
+  read -p "Do you want to update the documentation for this commit? (y/n) [n]" yn
+  if [ "$yn" = "" ]; then
+    yn='n'
+  fi
+  case $yn in
+      [Yy] ) break;;
+      [Nn] ) exit 0;;
+      * ) echo "Please input y or n";;
+  esac
+done
+
+exec <&-
+
+echo ""
+echo "Attempting to generate docs using Doxygen"
+pushd "$CTRL_DIR"
+    rm -rf "$DOCS_BUILD_DIR"
+    cmd.exe /c start "" "cleanBuildDocs.cmd" 2>&1 /dev/null
+    sleep 3
+
+    if [[ ! -d "$DOCS_BUILD_DIR" ]]; then
+        echo '>> FAILURE. Could not generate docs.'
+        exit 1
+    else
+        echo '>> SUCCESS. Docs generated.'
+    fi
+popd
+
+# Can't get auto add and commit to work properly, just do this manually for now
+# cd "$ROOT_DIR"
+# echo ""
+# echo "Adding docs to a brand-new commit"
+# LAST_COMMIT_HASH=$(git rev-parse HEAD)
+# git add -A "$DOCS_BUILD_DIR"
+# unlinkHooks
+# git commit -m "AutoDoc for last commit"
+# linkHooks
+
+echo "--------------"
+echo "Complete"
+exit 0
