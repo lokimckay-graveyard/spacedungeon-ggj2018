@@ -40,6 +40,8 @@ public class Enemy : MonoBehaviour, ICanReceiveDamage {
         navAgent.speed = moveSpeed;
         navAgent.angularSpeed = angularSpeed;
         currentHealth = maxHealth;
+
+        ModifyState(eState.Idle);
     }
 	
 	void Update () {

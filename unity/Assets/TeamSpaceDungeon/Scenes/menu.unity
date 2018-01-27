@@ -3809,6 +3809,8 @@ MonoBehaviour:
   VRPlayer: {fileID: 0}
   VRPlayerScript: {fileID: 0}
   ColMgr: {fileID: 1969493371}
+  winMessage: You won!
+  lossMessage: You lost
   GameState: 0
   victory: 0
 --- !u!4 &640173316
