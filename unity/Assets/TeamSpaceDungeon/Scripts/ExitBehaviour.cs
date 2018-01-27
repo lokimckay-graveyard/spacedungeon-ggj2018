@@ -8,11 +8,6 @@ public class ExitBehaviour : MonoBehaviour {
 
     void Awake() { GM = GameObject.Find("GameManager").GetComponent<GameManager>(); }
 
-    private void Update()
-    {
-        print(Time.timeScale);
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name == "[VRTK][AUTOGEN][HeadsetColliderContainer]")

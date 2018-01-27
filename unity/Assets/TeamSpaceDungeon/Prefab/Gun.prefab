@@ -342,7 +342,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1210038741492876}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -54.8, y: 2.26, z: -43.7}
+  m_LocalPosition: {x: 1.5, y: 1.589, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4054832311124884}
@@ -725,6 +725,9 @@ MonoBehaviour:
   enemyHit: {fileID: 1114388696808990, guid: 9cf08b3a464d62b448f80edbc27d546c, type: 2}
   bulletHole: {fileID: 1114388696808990, guid: 0370e2bce6551844db4268991cb79e87, type: 2}
   muzzle: {fileID: 4471679447934266}
+  castable:
+    serializedVersion: 2
+    m_Bits: 4294967001
 --- !u!120 &120434868227227612
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -761,7 +764,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 500}
+  - {x: 0, y: 0, z: 2000}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.44

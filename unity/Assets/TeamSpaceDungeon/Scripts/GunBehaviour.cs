@@ -8,6 +8,9 @@
         public GameObject enemyHit;
         public GameObject bulletHole;
         public Transform muzzle;
+        public float decalTime = 5f;
+
+        public LayerMask castable;
 
         public override void StartUsing(VRTK_InteractUse usingObject)
         {
@@ -17,36 +20,37 @@
 
         private void Shoot()
         {
-            RaycastHit hit;
 
             // Forward vector from Muzzle
             Vector3 fwd = muzzle.TransformDirection(Vector3.forward);
 
-            // Raycast forward from Muzzle, max 25 units
-            if (Physics.Raycast(muzzle.transform.position, fwd, out hit, 125))
+            RaycastHit[] hits;
+            hits = Physics.RaycastAll(muzzle.transform.position, fwd, 5000f, castable);
+
+            for (int i = 0; i < hits.Length; i++)
             {
+                RaycastHit hit = hits[i];
 
-                // Gunshot sound & animation goes here
-
-
-                ///////////////////////////////////////
-
-
-                // If you hit an enemy -> Do something
                 if (hit.transform.tag == "Enemy")
                 {
-                    Instantiate(enemyHit, hit.point, Quaternion.identity);
+                    GameObject newDecal = Instantiate(enemyHit, hit.point, Quaternion.identity);
+                    Destroy(newDecal, decalTime);
                     Enemy hitEnemyScript = hit.transform.GetComponent<Enemy>();
                     hitEnemyScript.ReceiveDamage(damage, gameObject.name);
+
+                    Renderer rend = hitEnemyScript.MainMesh;
+                    if (rend)
+                    {
+                        rend.material.color = Color.red;
+                    }
                 }
 
                 // For everything else
                 else
                 {
-                    Instantiate(bulletHole, hit.point, Quaternion.identity);
+                    GameObject newDecal = Instantiate(bulletHole, hit.point, Quaternion.identity);
+                    Destroy(newDecal, decalTime);
                 }
-
-
             }
         }
     }

@@ -40,9 +40,9 @@ GameObject:
   - component: {fileID: 4769848749321994}
   - component: {fileID: 114040889814690526}
   - component: {fileID: 65331018061229496}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Door
-  m_TagString: ExcludeTeleport
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

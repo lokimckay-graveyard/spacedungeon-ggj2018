@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour, ICanReceiveDamage {
     public int attacksPerSecond = 1;
     public float postAttackWaitDuration = 1f;
     public float awarenessRadius = 5f;
+    public float deathTime = 1f;
 
     [Header("Debugging")]
     public bool DebugCols;
@@ -42,6 +43,7 @@ public class Enemy : MonoBehaviour, ICanReceiveDamage {
         currentHealth = maxHealth;
 
         ModifyState(eState.Idle);
+        MainMesh.material.color = Color.clear;
     }
 	
 	void Update () {
@@ -238,7 +240,7 @@ public class Enemy : MonoBehaviour, ICanReceiveDamage {
         if(currentHealth <= 0)
         {
             if (DebugState) { Debug.Log(gameObject.name + " died"); }
-            Destroy(gameObject);
+            Destroy(gameObject, deathTime);
             return true;
         }
         return false;
