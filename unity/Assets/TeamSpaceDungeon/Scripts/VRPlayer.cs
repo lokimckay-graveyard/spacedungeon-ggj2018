@@ -6,6 +6,8 @@ public class VRPlayer : MonoBehaviour, ICanReceiveDamage {
 
     public int maxHealth = 10;
 
+    public Transform anchor;
+
     [Header("Debug")]
     public bool debugging;
 
@@ -18,6 +20,11 @@ public class VRPlayer : MonoBehaviour, ICanReceiveDamage {
     {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentHealth = maxHealth;
+    }
+
+    void Update()
+    {
+        UpdatePositionToAnchor();
     }
 
     /// <summary>
@@ -43,9 +50,17 @@ public class VRPlayer : MonoBehaviour, ICanReceiveDamage {
     {
         if (currentHealth <= 0)
         {
-            GM.GameOver();
+            GM.GoToGameOver();
             return true;
         }
         return false;
+    }
+
+    /// <summary>
+    /// Anchors the player pos to anchor transform
+    /// </summary>
+    private void UpdatePositionToAnchor()
+    {
+        transform.position = anchor.position;
     }
 }

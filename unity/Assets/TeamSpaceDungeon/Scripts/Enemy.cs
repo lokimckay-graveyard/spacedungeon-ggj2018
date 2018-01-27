@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour, ICanReceiveDamage {
     public float attackRange = 2;
     public int attacksPerSecond = 1;
     public float postAttackWaitDuration = 1f;
+    public float awarenessRadius = 5f;
 
     [Header("Debugging")]
     public bool DebugCols;
@@ -70,9 +71,12 @@ public class Enemy : MonoBehaviour, ICanReceiveDamage {
     /// <param name="moveTarget">Place to move to</param>
     public void Move(Vector3 moveTarget)
     {
-        if (ModifyState(eState.Moving))
+        if (GM.GetDistanceToVRPlayer(transform.position) < awarenessRadius)
         {
-            navAgent.SetDestination(moveTarget);
+            if (ModifyState(eState.Moving))
+            {
+                navAgent.SetDestination(moveTarget);
+            }
         }
     }
 
