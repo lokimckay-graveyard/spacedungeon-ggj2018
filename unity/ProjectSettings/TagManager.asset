@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - projectile
+  - FxTemporaire
+  - TeleportIgnore
   - ExcludeTeleport
   - Enemy
   layers:
@@ -15,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - minimap
   - 
   - 
   - 
