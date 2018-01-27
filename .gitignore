@@ -17,3 +17,10 @@ Thumbs.db
 .idea
 .vscode
 .vs
+
+# VR samples
+unity/Assets/SteamVR*
+unity/Assets/TutorialInfo*
+unity/Assets/VRSampleScenes*
+unity/Assets/VRStandardAssets*
+unity/Assets/Editor/CrossPlatformInput*
