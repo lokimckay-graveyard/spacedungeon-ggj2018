@@ -4,6 +4,7 @@
 
     public class GunBehaviour : VRTK_InteractableObject
     {
+        public int damage = 1;
         public GameObject enemyHit;
         public GameObject bulletHole;
         public Transform muzzle;
@@ -32,9 +33,11 @@
 
 
                 // If you hit an enemy -> Do something
-                if (hit.transform.tag == "enemy")
+                if (hit.transform.tag == "Enemy")
                 {
                     Instantiate(enemyHit, hit.point, Quaternion.identity);
+                    Enemy hitEnemyScript = hit.transform.GetComponent<Enemy>();
+                    hitEnemyScript.ReceiveDamage(damage, gameObject.name);
                 }
 
                 // For everything else
