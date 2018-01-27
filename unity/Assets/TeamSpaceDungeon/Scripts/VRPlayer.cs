@@ -5,7 +5,7 @@ using UnityEngine;
 public class VRPlayer : MonoBehaviour, ICanReceiveDamage {
 
     public int maxHealth = 10;
-
+    public float flashDuration = 0.5f;
     public Transform anchor;
 
     [Header("Debug")]
@@ -14,12 +14,15 @@ public class VRPlayer : MonoBehaviour, ICanReceiveDamage {
     protected int currentHealth;
     private GameManager GM;
 
+    private GameObject dmgImg;
+
     private void Awake() { Initialize(); }
 
     void Initialize()
     {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentHealth = maxHealth;
+        dmgImg = GameObject.Find("PlayerReceiveDamage");
     }
 
     void Update()
@@ -38,6 +41,7 @@ public class VRPlayer : MonoBehaviour, ICanReceiveDamage {
         currentHealth -= damageDealt;
         if (currentHealth <= 0) { Kill(damageDealer); }
         if (debugging) { Debug.Log("Health is now " + currentHealth); }
+        FlashDamageImage();
         return true;
     }
 
@@ -62,5 +66,16 @@ public class VRPlayer : MonoBehaviour, ICanReceiveDamage {
     private void UpdatePositionToAnchor()
     {
         transform.position = anchor.position;
+    }
+
+    private void FlashDamageImage()
+    {
+        dmgImg.SetActive(true);
+        Invoke("TurnOffDamageImage", flashDuration);
+    }
+
+    private void TurnOffDamageImage()
+    {
+        dmgImg.SetActive(false);
     }
 }
