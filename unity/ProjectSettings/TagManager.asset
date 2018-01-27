@@ -9,6 +9,7 @@ TagManager:
   - TeleportIgnore
   - ExcludeTeleport
   - Enemy
+  - WonLostVRText
   layers:
   - Default
   - TransparentFX

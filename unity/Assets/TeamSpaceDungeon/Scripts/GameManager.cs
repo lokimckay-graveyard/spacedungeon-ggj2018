@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
 
 
     private Text winLossText;
+    private SimpleHelvetica[] winLossTextVR = new SimpleHelvetica[4];
     private bool loadingNewScene = true;
     [HideInInspector] public bool victory = false;
 
@@ -59,13 +60,38 @@ public class GameManager : MonoBehaviour {
             }
             if(winLossText == null)
             {
-                winLossText = GameObject.Find("WinLose").GetComponent<Text>();
-                if(victory)
+                GameObject winLossGO = GameObject.Find("WinLose");
+                if (winLossGO)
                 {
-                    winLossText.text = winMessage;
-                } else
+                    winLossText = winLossGO.GetComponent<Text>();
+                    if (victory)
+                    {
+                        winLossText.text = winMessage;
+                    }
+                    else
+                    {
+                        winLossText.text = lossMessage;
+                    }
+                }
+            }
+            if(winLossTextVR[0] == null)
+            {
+                GameObject[] GOs = GameObject.FindGameObjectsWithTag("WonLostVRText");
+                if (GOs.Length > 0)
                 {
-                    winLossText.text = lossMessage;
+                    for (int i = 0; i < GOs.Length; i++)
+                    {
+                        winLossTextVR[i] = GOs[i].GetComponent<SimpleHelvetica>();
+                        if (victory)
+                        {
+                            winLossTextVR[i].Text = winMessage;
+                        }
+                        else
+                        {
+                            winLossTextVR[i].Text = lossMessage;
+                        }
+                        winLossTextVR[i].GenerateText();
+                    }
                 }
             }
         }
@@ -86,12 +112,14 @@ public class GameManager : MonoBehaviour {
     {
         GameState = gState.menu;
         LoadNewScene("menu");
+        victory = false;
     }
 
     public void GoToMain()
     {
         GameState = gState.play;
         LoadNewScene("main");
+        victory = false;
     }
 
     public void GoToGameOver()

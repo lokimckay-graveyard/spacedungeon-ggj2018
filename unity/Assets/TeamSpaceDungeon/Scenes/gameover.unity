@@ -687,6 +687,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   origin: {fileID: 0}
+--- !u!4 &74465779 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4220299554565714, guid: 643f7511fcc2ddb42bbc2a4732982e71,
+    type: 2}
+  m_PrefabInternal: {fileID: 1519859619}
 --- !u!1 &85088088
 GameObject:
   m_ObjectHideFlags: 0
@@ -6661,6 +6666,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 106381266}
+  - {fileID: 74465779}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8090,6 +8096,52 @@ Transform:
   m_Father: {fileID: 624835241}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1519859619
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1268210788}
+    m_Modifications:
+    - target: {fileID: 4220299554565714, guid: 643f7511fcc2ddb42bbc2a4732982e71, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220299554565714, guid: 643f7511fcc2ddb42bbc2a4732982e71, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220299554565714, guid: 643f7511fcc2ddb42bbc2a4732982e71, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220299554565714, guid: 643f7511fcc2ddb42bbc2a4732982e71, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220299554565714, guid: 643f7511fcc2ddb42bbc2a4732982e71, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220299554565714, guid: 643f7511fcc2ddb42bbc2a4732982e71, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220299554565714, guid: 643f7511fcc2ddb42bbc2a4732982e71, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4220299554565714, guid: 643f7511fcc2ddb42bbc2a4732982e71, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990211902633904, guid: 643f7511fcc2ddb42bbc2a4732982e71, type: 2}
+      propertyPath: m_Name
+      value: GameOverVRNotice
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 643f7511fcc2ddb42bbc2a4732982e71, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1526156685
 GameObject:
   m_ObjectHideFlags: 0
