@@ -6,6 +6,9 @@ public class DoorAnimController : MonoBehaviour {
 
 	private DoorLock doorLock;
 
+	// List of actors inside the door radius
+	private List<Transform> actorsInProximity;
+
 	void Awake () {
 		doorLock = GetComponent<DoorLock> ();
 	}
