@@ -295,13 +295,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
-  moveSpeed: 2
+  moveSpeed: 0.75
   angularSpeed: 1200
   damage: 1
   attackRange: 2
   attacksPerSecond: 1
   postAttackWaitDuration: 1
-  awarenessRadius: 40
+  awarenessRadius: 120
   deathTime: 1
   DebugCols: 0
   DebugState: 0
