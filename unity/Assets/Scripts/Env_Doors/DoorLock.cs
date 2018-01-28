@@ -52,10 +52,10 @@ public class DoorLock : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider col) {
-		if (useKeyCard && col.tag == "Player") {
-			if (!AttemptUnlock (col.transform.name)) {
-				Debug.Log ("Wrong KeyCard");
-			}
+		if (useKeyCard && !AttemptUnlock (col.transform.name)) {
+			Debug.Log ("Wrong KeyCard");
+		} else {			
+			
 		}
 	}
 }

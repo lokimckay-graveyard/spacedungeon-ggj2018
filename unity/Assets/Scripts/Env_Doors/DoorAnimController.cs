@@ -19,28 +19,34 @@ public class DoorAnimController : MonoBehaviour {
 
 	void OnLocked () {
 		// Close the door with animation
-		animator.SetBool("open", false);
+		animator.SetBool("Open", false);
 		Debug.Log ("HELLO");
+	}
+
+	// Called when the keycard enters the trigger zone
+	void OpenDoor () {
+		// Open the door with animation
+		animator.SetBool("Open", true);
 	}
 
 	// Called when the trigger detects an object enter it's radius
 	void OnTriggerEnter (Collider col) {
-		if ((col.tag == "Player" || col.tag == "Enemy") && !actorsInProximity.Contains(col.transform.GetInstanceID())) {
+		if ((col.tag == "Player" || col.tag == "Enemy" || col.tag == "KeyCard") && !actorsInProximity.Contains(col.transform.GetInstanceID())) {
 			actorsInProximity.Add (col.transform.GetInstanceID());
-			if (doorLock.locked == false && !animator.GetBool("open")) {
+			if (doorLock.locked == false && !animator.GetBool("Open")) {
 				// Open the door with animation
-				animator.SetBool("open", true);
+				animator.SetBool("Open", true);
 			}
 		}
 	}
 
 	// Called when a player exits the door range
 	void OnTriggerExit (Collider col) {
-		if ((col.tag == "Player" || col.tag == "Enemy") && actorsInProximity.Contains (col.transform.GetInstanceID())) {
+		if ((col.tag == "Player" || col.tag == "Enemy" || col.tag == "KeyCard") && actorsInProximity.Contains (col.transform.GetInstanceID())) {
 			actorsInProximity.Remove (col.transform.GetInstanceID());
 			if (actorsInProximity.Count == 0) {
 				// Close the door with animation
-				animator.SetBool("open", false);
+				animator.SetBool("Open", false);
 			}
 		}
 	}
