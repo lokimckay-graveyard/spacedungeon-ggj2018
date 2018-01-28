@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 259fa25b9330413429ca41793cbe1e5f
-timeCreated: 1517050671
+guid: 2ed65860a18d67c40be6046d9306949c
+timeCreated: 1517112560
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -30,12 +30,7 @@ ModelImporter:
     7400000: Armature|DoorOpen
     9500000: //RootNode
     13700000: Plane.193
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_Door01
-    second: {fileID: 2100000, guid: 8e684dd3bdb1a8248a4471d73d239823, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
