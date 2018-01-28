@@ -7989,11 +7989,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1894716258990086, guid: b87099452f910e04c92de5ad93df0f28, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1929500960450904, guid: b87099452f910e04c92de5ad93df0f28, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1869675059629556, guid: b87099452f910e04c92de5ad93df0f28, type: 2}
       propertyPath: m_IsActive
