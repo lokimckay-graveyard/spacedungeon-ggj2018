@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
-  moveSpeed: 0.75
+  moveSpeed: 2
   angularSpeed: 1200
   damage: 1
   attackRange: 2
