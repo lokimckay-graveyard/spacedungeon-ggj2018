@@ -36,7 +36,8 @@ public class DoorAnimController : MonoBehaviour {
 			if (doorLock.locked == false && !animator.GetBool("Open")) {
 				// Open the door with animation
 				animator.SetBool("Open", true);
-			}
+                GetComponent<AudioSource>().Play();
+            }
 		}
 	}
 
@@ -47,7 +48,8 @@ public class DoorAnimController : MonoBehaviour {
 			if (actorsInProximity.Count == 0) {
 				// Close the door with animation
 				animator.SetBool("Open", false);
-			}
+                GetComponent<AudioSource>().Play();
+            }
 		}
 	}
 }

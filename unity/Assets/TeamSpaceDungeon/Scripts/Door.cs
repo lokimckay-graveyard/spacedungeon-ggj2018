@@ -45,11 +45,9 @@ public class Door : MonoBehaviour {
     public void Open()
     {
 
-        // Play Sound
-        if (GetComponent<AudioSource>() != null)
-        {
-            GetComponent<AudioSource>().Play();
-        }
+        // Play Sound 
+        GetComponent<AudioSource>().Play();
+
         
 
         desiredState = dState.open;
@@ -57,12 +55,8 @@ public class Door : MonoBehaviour {
 
     public void Close()
     {
-
-        // Play Sound
-        if (GetComponent<AudioSource>() != null)
-        {
-            GetComponent<AudioSource>().Play();
-        }
+        // Play Sound 
+        GetComponent<AudioSource>().Play();
 
         desiredState = dState.closed;
     }
