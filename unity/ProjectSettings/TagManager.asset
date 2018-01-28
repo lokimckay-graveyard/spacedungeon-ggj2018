@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - projectile
+  - FxTemporaire
+  - TeleportIgnore
+  - WonLostVRText
+  - Enemy
+  - KeyCard
   layers:
   - Default
   - TransparentFX
