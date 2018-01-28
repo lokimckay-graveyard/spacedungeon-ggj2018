@@ -31,7 +31,6 @@ public class DoorAnimController : MonoBehaviour {
 
 	// Called when the trigger detects an object enter it's radius
 	void OnTriggerEnter (Collider col) {
-        print(col.name);
         if ((col.gameObject.name == "[VRTK][AUTOGEN][BodyColliderContainer]" || col.tag == "Player" || col.tag == "Enemy" || col.tag == "KeyCard") && !actorsInProximity.Contains(col.transform.GetInstanceID())) {
 			actorsInProximity.Add (col.transform.GetInstanceID());
 			if (doorLock.locked == false && !animator.GetBool("Open")) {
@@ -44,7 +43,6 @@ public class DoorAnimController : MonoBehaviour {
 
 	// Called when a player exits the door range
 	void OnTriggerExit (Collider col) {
-        print(col.name);
 		if ((col.gameObject.name == "[VRTK][AUTOGEN][BodyColliderContainer]" || col.tag == "Player" || col.tag == "Enemy" || col.tag == "KeyCard") && actorsInProximity.Contains (col.transform.GetInstanceID())) {
 			actorsInProximity.Remove (col.transform.GetInstanceID());
 			if (actorsInProximity.Count == 0) {
