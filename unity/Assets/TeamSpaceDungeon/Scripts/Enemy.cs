@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour, ICanReceiveDamage {
     public int attacksPerSecond = 1;
     public float postAttackWaitDuration = 1f;
     public float awarenessRadius = 5f;
-    public float deathTime = 1f;
+    public float deathTime = 0.1f;
 
     [Header("Debugging")]
     public bool DebugCols;
@@ -37,6 +37,10 @@ public class Enemy : MonoBehaviour, ICanReceiveDamage {
     public AudioClip farSound;
     AudioSource thisAudio;
     float maxSoundTimer;
+
+	// Sprite that the user sees when getting attacked or when this dies
+	public Transform enemySprite;
+	public float enemyAttackVisibilityTime = 0.1f;
 
     void Start () {
         Initialize();
@@ -171,9 +175,17 @@ public class Enemy : MonoBehaviour, ICanReceiveDamage {
     {
         if (ModifyState(eState.Waiting))
         {
+			// Flash the sprite.
+			enemySprite.gameObject.SetActive (true);
             Invoke("Idle", duration);
+			Invoke("ResetEnemySprite", enemyAttackVisibilityTime);
         }
     }
+
+	// Reset the sprite after a short delay to hidden mode. 
+	private void ResetEnemySprite () {
+		enemySprite.gameObject.SetActive (false);
+	}
 
     /// <summary>
     /// Attempt to update the enemies state to a new one
@@ -280,6 +292,7 @@ public class Enemy : MonoBehaviour, ICanReceiveDamage {
         if(currentHealth <= 0)
         {
             if (DebugState) { Debug.Log(gameObject.name + " died"); }
+			enemySprite.gameObject.SetActive (true);
             Destroy(gameObject, deathTime);
             return true;
         }
