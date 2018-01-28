@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class DoorLock : MonoBehaviour {
 
@@ -9,15 +10,26 @@ public class DoorLock : MonoBehaviour {
 	// Is this door locked by default?
 	public bool locked = false;
 	public string unlockCode = "defaultCode";
+	public bool useKeyCard = false;
 
+	// Private components
 	private NavMeshObstacle navModifier;
+	private BoxCollider boxCollider;
+
+	// Event dispatcher
+	[HideInInspector]
+	public UnityEvent OnLockEvent;
 
 	void Awake () {
 		navModifier = GetComponent<NavMeshObstacle> ();
+		boxCollider = GetComponent<BoxCollider> ();
+		OnLockEvent = new UnityEvent ();
 		if (locked) {
 			navModifier.carving = true;
+			boxCollider.enabled = true;
 		} else {
 			navModifier.carving = false;
+			boxCollider.enabled = false;
 		}
 	}
 
@@ -25,6 +37,7 @@ public class DoorLock : MonoBehaviour {
 		if (code == unlockCode) {
 			locked = false;
 			navModifier.carving = false;
+			boxCollider.enabled = false;
 			return true;
 		} else {
 			return false;
@@ -34,5 +47,15 @@ public class DoorLock : MonoBehaviour {
 	public void LockDoor () {
 		locked = true;
 		navModifier.carving = true;
+		boxCollider.enabled = true;
+		OnLockEvent.Invoke ();
+	}
+
+	void OnTriggerEnter (Collider col) {
+		if (useKeyCard && col.tag == "Player") {
+			if (!AttemptUnlock (col.transform.name)) {
+				Debug.Log ("Wrong KeyCard");
+			}
+		}
 	}
 }
