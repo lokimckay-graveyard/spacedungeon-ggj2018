@@ -21,6 +21,9 @@
         private void Shoot()
         {
 
+            // Play gunshot sound
+            GetComponent<AudioSource>().Play();
+
             // Forward vector from Muzzle
             Vector3 fwd = muzzle.TransformDirection(Vector3.forward);
 
