@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028377, g: 0.22571409, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -8645,7 +8645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057015237f68bd74d9c6c6c28ea347e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreTriggerColliders: 0
+  ignoreTriggerColliders: 1
   colliderRadius: 0.1
   targetListPolicy: {fileID: 0}
   headsetColliding: 0
@@ -8735,7 +8735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionDetector: 0
-  ignoreTriggerColliders: 0
+  ignoreTriggerColliders: 1
   rewindDelay: 0.5
   pushbackDistance: 0.5
   crouchThreshold: 0.5

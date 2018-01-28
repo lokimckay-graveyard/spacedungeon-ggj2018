@@ -23,6 +23,7 @@ public class VRPlayer : MonoBehaviour, ICanReceiveDamage {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentHealth = maxHealth;
         dmgImg = GameObject.Find("PlayerReceiveDamage");
+        dmgImg.SetActive(false);
     }
 
     void Update()
