@@ -30,6 +30,14 @@ public class Enemy : MonoBehaviour, ICanReceiveDamage {
     public enum eState { Idle, Moving, Attacking, Waiting }
     public eState EnemyState;
 
+    public float soundTimer;
+    public float nearSoundDistance;
+    public float farSoundDistance;
+    public AudioClip nearSound;
+    public AudioClip farSound;
+    AudioSource thisAudio;
+    float maxSoundTimer;
+
     void Start () {
         Initialize();
 	}
@@ -44,6 +52,9 @@ public class Enemy : MonoBehaviour, ICanReceiveDamage {
 
         ModifyState(eState.Idle);
         MainMesh.material.color = Color.clear;
+
+        thisAudio = GetComponent<AudioSource>();
+        maxSoundTimer = soundTimer;
     }
 	
 	void Update () {
@@ -56,7 +67,36 @@ public class Enemy : MonoBehaviour, ICanReceiveDamage {
             navAgent.isStopped = true;
             Idle();
         }
+
+        checkSound();
 	}
+
+    void checkSound()
+    {
+        // Far Sound
+        if (GM.GetDistanceToVRPlayer(transform.position) < farSoundDistance)
+        {
+            if (soundTimer < 0.0f)
+            {
+                thisAudio.clip = farSound;
+                thisAudio.Play();
+                soundTimer = maxSoundTimer;
+            }
+        }
+        // Near Sound
+        else if (GM.GetDistanceToVRPlayer(transform.position) < nearSoundDistance)
+        {
+            if (soundTimer < 0.0f)
+            {
+                thisAudio.clip = nearSound;
+                thisAudio.Play();
+                soundTimer = maxSoundTimer;
+            }
+        }
+
+        // Decrease Timer
+        soundTimer -= Time.deltaTime;
+    }
 
     /// <summary>
     /// Houses all enemy move logic
