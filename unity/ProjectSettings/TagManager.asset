@@ -7,7 +7,6 @@ TagManager:
   - projectile
   - FxTemporaire
   - TeleportIgnore
-  - ExcludeTeleport
   - Enemy
   - WonLostVRText
   layers:
@@ -19,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - minimap
+  - miniMap
   - 
   - 
   - 
