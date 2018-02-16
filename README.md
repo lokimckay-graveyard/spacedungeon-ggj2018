@@ -14,4 +14,4 @@ Screenshots and more information can be found on [GGJ's site here](https://globa
 * Walter Pham (Weapon Modelling/Texturing)
 * [Sanjeev Prasad](https://github.com/sanjeevprasad92) (Programming)
 * Darren Scott (Audio Engineering)
-* Michael Tansell (Programming/Level Design)
+* [Michael Tansell](https://github.com/Meuu) (Programming/Level Design)
